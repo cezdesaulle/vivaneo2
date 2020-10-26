@@ -6,7 +6,12 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
+        in_memory: { memory: ~ }
         app_user_provider:
+            entity:
+                class: App\Entity\Utilisateur
+                property: email
+        in_database:
             entity:
                 class: App\Entity\Utilisateur
                 property: email
@@ -14,28 +19,33 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
             anonymous: true
-            provider: app_user_provider
-            guard:
-                authenticators:
-                    - App\Security\UserAuthenticator
+            provider: in_database
             form_login:
                 login_path: app_login
                 check_path: app_login
             logout:
                 path: app_logout
                 target: accueil
+        second:
+            anonymous: true
+            provider: app_user_provider
+            logout:
+                path: app_logout
+                target: accueil
             oauth:
                 resource_owners:
-                    facebook: "/login/check-facebook"
-                    google : "/login/check-google"
+                     facebook: "/login/check-facebook"
+                     google: "/login/check-google"
                 login_path: /login
                 use_forward: false
                 failure_path: /login
 
                 oauth_user_provider:
                     service: my.oauth_aware.user_provider.service
+
                 # where to redirect after logout
                 # target: app_any_route
 

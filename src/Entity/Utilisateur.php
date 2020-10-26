@@ -26,7 +26,7 @@ class Utilisateur implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles = 'ROLE_USER';
 
     /**
      * @var string The hashed password
@@ -161,22 +161,11 @@ class Utilisateur implements UserInterface
     }
 
     /**
-     * @see UserInterface
+     * @inheritDoc
      */
-    public function getRoles(): array
+    public function getRoles()
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
+        return [$this->roles];
     }
 
     /**

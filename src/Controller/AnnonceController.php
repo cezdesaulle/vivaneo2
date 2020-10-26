@@ -44,6 +44,7 @@ class AnnonceController extends AbstractController
                     $request->request->get('password'));
                 $utilisateur->setPassword($encode);
                 $manager->persist($utilisateur);
+                $manager->flush();
                 $this->addFlash('success', 'Votre compte a bien été créé');
             }
 
