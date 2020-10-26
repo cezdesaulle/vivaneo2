@@ -1,0 +1,78 @@
+{%  extends 'base.html.twig' %}
+{%  block body %}
+
+
+    <div class="row">
+
+        <div class="col-md-9">
+
+            <h2>Description</h2>
+            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!<br><br></p>
+
+
+            {% for annonce in annonces %}
+
+                <!-- .row .well -->
+                <div class="row well">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <img alt="" class="img-responsive" src="http://placehold.it/180x180&amp;text=Annonce">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h2 style="margin:0;padding:0;">{{ annonce.titre }}</h2>
+                                    <h3 style="margin-top:0;"><small>{{ annonce.categorie }}</small></h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- Star
+                                    <div class="lead">
+                                        <div id="stars-existing" class="starrr" data-rating='4'></div>-->
+                                    <!--<span id="count-existing">4</span> étoile(s)-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <a class="btn btn-default" href="{{ path('annonce', {'id': annonce.id}) }}" role="button">Lire la suite</a>
+                        </div>
+                    </div>
+                </div><!-- /.row .well -->
+            {% endfor %}
+
+        </div><!-- /.col-md-9 -->
+
+
+
+
+
+        <div class="col-md-3">
+            <a class="btn btn-primary btn-lg btn-block" href="{{ path('publier') }}">Publier une annonce</a>
+            <br><br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel Category</h3>
+                        </div>
+                        <ul class="list-group">
+                            {% for annonce in annonces %}
+                                {% for categories in annonce.categorie %}
+                                    <a href="#" class="list-group-item">{{ categories }}</a>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- /.container -->
+    <br><br>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{%  extends 'base.html.twig' %}
+{%  block body %}
+
+
+    <!-- Heading Row -->
+    <div class="row">
+        <div class="col-md-3">
+            <img alt="" class="img-responsive" src="http://placehold.it/250x250&amp;text=Annonce">
+        </div>
+        <!-- /.col-md-9 -->
+        <div class="col-md-6">
+            <h1>{{ annonce.titre }}</h1>
+            <h2><small>{{ annonce.categorie }}</small></h2>
+            <!-- Star
+            <div class="lead">
+                <div id="stars-existing" class="starrr" data-rating='4'></div>
+                <p><small>1 recommandation(s)</small></p>
+            </div>
+
+
+            <button type="button" class="btn btn-default btn-circle"><i class="fa fa-envelope-o"></i></button>
+            <button type="button" class="btn btn-primary btn-circle"><i class="fa fa-id-card-o"></i></button>
+            <button type="button" class="btn btn-success btn-circle"><i class="fa fa-certificate"></i></button>
+            <button type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-heart"></i></button>
+            <br><br>
+            -->
+        </div>
+
+        <div class="col-md-3">
+            <a class="btn btn-primary btn-lg btn-block" href="{{ path('contacter', {'id': annonce.id}) }}">Contacter</a>
+            <!--<a class="btn btn-danger btn-lg btn-block" href="#">Ajouter aux favoris</a>
+            <div class="text-center"><small>12 personnes ont ajouté cette annonce à leurs favoris</small></div>-->
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="col-md-12">
+                <h2>Description</h2>
+                <p>{{ annonce.contenu }}</p>
+            </div>
+            <!--
+            <div class="col-md-12">
+                <h2>Tags</h2>
+                <p>
+                    <a href="#"><span class="badge badge-info">Bootstrap</span></a>
+                    <a href="#"><span class="badge badge-info">Web</span></a>
+                    <a href="#"><span class="badge badge-info">CSS</span></a>
+                    <a href="#"><span class="badge badge-info">HTML</span></a>
+                </p>
+
+            </div>
+            <div class="col-md-12">
+                <h2>Recommandation</h2>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="stars-existing" class="starrr" data-rating='4' style="float:right;"></div>
+                        <h5>Lydia A.</h5>
+
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a sapien odio, sit amet, lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a sapien odio, sit ametorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a sapien odio, sit amet, lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a sapien odio, sit amet</p>
+                    </div>
+                </div>
+                <a class="btn btn-link btn-lg btn-block" href="#">Ecrire une recommandation</a>
+            </div>
+            -->
+
+
+
+        </div><!-- /.col-md-9 -->
+
+
+        <div class="col-md-3">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel Category</h3>
+                        </div>
+                        <ul class="list-group">
+                            <a href="#" class="list-group-item active">{{ annonce.categorie }}</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br><br>
+
+
+
+{% endblock %}

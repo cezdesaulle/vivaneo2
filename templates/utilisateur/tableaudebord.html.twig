@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+
+    <!-- Heading Row -->
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Tableau de bord</h3>
+                        </div>
+                        <ul class="list-group">
+                            <a href="{{ path('tableauidentite') }}" class="list-group-item">Identité</a>
+                            <a href="{{ path('tableaumail') }}" class="list-group-item">E-mail</a>
+                            <a href="{{ path('tableaupassword') }}" class="list-group-item">Mot de passe</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-md-9 -->
+        <div class="col-md-6">
+            <-- Tableau de bord
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+
+
+{%  endblock %}

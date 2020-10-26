@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="row">
+
+        <div class="col-md-9">
+
+            <h2>Publier une annonce</h2>
+            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it
+                makes a great use of the standard Bootstrap core components. Feel free to use this template for any
+                project you want!<br><br></p>
+
+            <div class="well">
+                <form method="post" action="" class="form-horizontal">
+                    <fieldset>
+                        <legend>Déposer une annonce</legend>
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-4">Catégorie</label>
+                            <div class="col-md-8">
+                                <select name="categorie" class="form-control">
+                                    <option>Category 1</option>
+                                    <option>Category 2</option>
+                                    <option>Category 3</option>
+                                    <option>Category 4</option>
+                                    <option>Category 5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-4">Titre de l'annonce</label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="titre" id="inputName" placeholder="Titre de l'annonce"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstname" class="col-md-4">Texte de l'annonce</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="contenu" id="TextareaAnnonce"
+                                          placeholder="Texte de l'annonce" rows="6"></textarea>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <!-- Partie inscription (seulement si pas identifié) -->
+                    {% if app.user is empty %}
+
+                    <fieldset>
+                        <legend>Inscription (à prevoir si on est pas logué / qu'on s'inscrive en même temps)</legend>
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-4">Nom</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="inputName" placeholder="Nom" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputFirstname" class="col-md-4">Prénom</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="inputFirstname" placeholder="Prénom" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-4">E-mail</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="inputEmail" placeholder="Adresse e-mail" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-md-4">Mot de passe</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="inputPassword" placeholder="Mot de passe" type="text">
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">Publier l'annonce</button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </form>
+
+
+            </div>
+
+        </div><!-- /.col-md-9 -->
+
+
+        <div class="col-md-3">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Panel Category</h3>
+                        </div>
+                        <ul class="list-group">
+                            <a href="#" class="list-group-item">Category 1</a>
+                            <a href="#" class="list-group-item active">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                            <a href="#" class="list-group-item">Vestibulum at eros</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- /.container -->
+    <br><br>
+
+
+{% endblock %}

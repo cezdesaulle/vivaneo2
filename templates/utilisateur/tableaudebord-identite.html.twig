@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+    <!-- Heading Row -->
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Tableau de bord</h3>
+                        </div>
+                        <ul class="list-group">
+                            <a href="{{ path('tableauidentite') }}" class="list-group-item">Identité</a>
+                            <a href="{{ path('tableaumail') }}" class="list-group-item">E-mail</a>
+                            <a href="{{ path('tableaupassword') }}" class="list-group-item">Mot de passe</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-md-9 -->
+        <div class="col-md-9">
+
+            <div class="well">
+                <form method="post" action="{{ path('modifidentite') }}" class="form-horizontal">
+                    <fieldset>
+                        <legend>Identité</legend>
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-4">Nom</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="{{ utilisateur.nom }}" name="nom" id="inputName" placeholder="Nom" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstname" class="col-md-4">Prénom</label>
+                            <div class="col-md-8">
+                                <input class="form-control" value="{{ utilisateur.prenom }}" name="prenom" id="inputFirstname" placeholder="Prénom" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <!-- a faire plus tard
+            <div class="well">
+                <form class="form-horizontal">
+                  <fieldset>
+                    <legend>Informations générales</legend>
+                    <div class="form-group">
+                      <label for="inputDate" class="col-md-4">Date</label>
+                      <div class="col-md-8">
+                        <input class="form-control" id="inputDate" placeholder="Date de naissance" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="select" class="col-md-4">Sexe</label>
+                      <div class="col-md-8">
+                        <select class="form-control" id="select">
+                          <option>Non précisé</option>
+                          <option>Femme</option>
+                          <option>Homme</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-8 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+            </div>
+            -->
+
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+{% endblock %}
