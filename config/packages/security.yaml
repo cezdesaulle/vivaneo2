@@ -21,7 +21,7 @@ security:
             security: false
 
         main:
-            anonymous: true
+            anonymous: lazy
             provider: in_database
             form_login:
                 login_path: app_login
@@ -58,5 +58,24 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-    # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    # - { path: ^/profile, roles: ROLE_USER }
+     - { path: ^/contacter/,  roles: [ROLE_USER, ROLE_ADMIN ] }
+     - { path: ^/envoimail,  roles: [ROLE_USER, ROLE_ADMIN ]  }
+     - { path: ^/mesannonces,  roles: [ROLE_USER, ROLE_ADMIN ]  }
+     - { path: ^/modifannonce/,  roles: [ROLE_USER, ROLE_ADMIN ]  }
+     - { path: ^/supprimerannonce/,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/modifmail,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/tableaumail,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/modifidentite,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/tableauidentite,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/modifpassword,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/tableaupassword,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/motdepasseoublie,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/reset_pass/,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/logout,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/tableaudebord,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/inscription,  roles: [ROLE_USER, ROLE_ADMIN ]}
+     - { path: ^/creercategorie, roles: ROLE_ADMIN }
+     - { path: ^/listeutilisateurs, roles: ROLE_ADMIN }
+     - { path: ^/supprimerutilisateur/, roles: ROLE_ADMIN }
+     - { path: ^/contact/, roles: ROLE_ADMIN }
+

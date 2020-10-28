@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
-
-
     <div class="row">
 
         <div class="col-md-9">
@@ -38,6 +37,12 @@
                         <div class="col-md-9">
                             <a class="btn btn-default" href="{{ path('annonce', {'id': annonce.id}) }}" role="button">Lire
                                 la suite</a>
+                            <a class="btn btn-primary" href="{{ path('modifannonce', {'id': annonce.id}) }}" role="button">Modfier
+                                </a>
+                            <a class="btn btn-danger" href="{{ path('supprimerannonce', {'id': annonce.id}) }}"
+                               onclick="return confirm('Etes vous sûr de vouloir supprimer cette annonce?');" role="button">Supprimer
+                                </a>
+
                         </div>
                     </div>
                 </div><!-- /.row .well -->
@@ -50,27 +55,11 @@
             <a class="btn btn-primary btn-lg btn-block" href="{{ path('publier') }}">Publier une annonce</a>
             <br><br>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Panel Category</h3>
-                        </div>
-                        <ul class="list-group">
-                            {% for categorie in categories %}
-                                <a href="{{ path('annonceliste', {'id': categorie.id}) }}" class="list-group-item active">{{ categorie.nom }}</a>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </div> <!-- /.container -->
     <br><br>
 
-
-
-
-
 {% endblock %}
+

@@ -17,7 +17,7 @@ class MyEntityUserProvider extends EntityUserProvider implements AccountConnecto
     {
         $ressourceOwnerName = $response->getResourceOwner()->getName();
         if (!isset($this->properties[$ressourceOwnerName])){
-            throw new \RuntimeException(sprintf("No property defined for ressource owner", $ressourceOwnerName));
+            throw new \RuntimeException(sprintf("Aucune information sur le compte", $ressourceOwnerName));
         }
 
 
@@ -97,7 +97,6 @@ class MyEntityUserProvider extends EntityUserProvider implements AccountConnecto
     private function updateUser(UserInterface $user, UserResponseInterface $response)
     {
         $user->setEmail($response->getEmail());
-
         $this->em->persist($user);
         $this->em->flush();
 

@@ -17,10 +17,6 @@ class Annonce
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $categorie;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -38,22 +34,20 @@ class Annonce
      */
     private $annonceur;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="annonces")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCategorie(): ?string
-    {
-        return $this->categorie;
-    }
 
-    public function setCategorie(string $categorie): self
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
 
     public function getTitre(): ?string
     {
@@ -90,4 +84,18 @@ class Annonce
 
         return $this;
     }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+
 }

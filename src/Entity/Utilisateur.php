@@ -4,10 +4,14 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
+ * @UniqueEntity(fields={"_username"},message="L'adresse mail est déjà utilisée")
  */
 class Utilisateur implements UserInterface
 {
@@ -20,19 +24,26 @@ class Utilisateur implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message="l'email n'est pas valide")
+     * @Assert\Email(mode="strict", message="Le format de l'email est incorrect")
+     * @Assert\Email(checkMX=true, message="Aucun serveur mail n'a été trouvé pour ce domaine")
      */
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     *@ORM\Column(type="json")
      */
     private $roles = 'ROLE_USER';
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
+     * @Assert\Regex("/^[a-zA-Z0-9]{6,20}$/", message="Mot de passe non conforme")
      */
     private $password;
+
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -88,13 +99,24 @@ class Utilisateur implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\Length(max="20", maxMessage="Le nom ne peut contenir plus de 20 caractères.")
+     * @Assert\Length(min="3", minMessage="Le nom ne peut contenir moins de 3 caractères.")
+     * @Assert\NotBlank(message="Veuillez indiquer votre prénom et nom")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\Length(max="20", maxMessage="Le nom ne peut contenir plus de 20 caractères.")
+     * @Assert\Length(min="3", minMessage="Le nom ne peut contenir moins de 3 caractères.")
+     * @Assert\NotBlank(message="Veuillez indiquer votre prénom et nom")
      */
     private $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reset_token;
 
 
 
@@ -220,6 +242,18 @@ class Utilisateur implements UserInterface
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken(?string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
 
         return $this;
     }
